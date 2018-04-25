@@ -1,0 +1,54 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["eslint-config-airbnb"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "plugins": ["react", "flowtype"],
+  "rules": {
+    "no-mixed-operators": [
+      "warn",
+      {
+        "groups": [
+          ["&", "|", "^", "~", "<<", ">>", ">>>"],
+          ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
+          ["&&", "||"],
+          ["in", "instanceof"]
+        ],
+        "allowSamePrecedence": false
+      }
+    ],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prefer-stateless-function": "off",
+    "import/prefer-default-export": "off",
+    "max-len": ["error", 100],
+    "no-use-before-define": "off",
+    "import/first": "off",
+    "no-confusing-arrow": "off",
+    "flowtype/require-parameter-type": [2],
+    "react/no-unescaped-entities": "off",
+    "react/jsx-first-prop-new-line": [2],
+    "react/jsx-max-props-per-line": [1, { "maximum": 1 }],
+    "quotes": ["error", "single"]
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    },
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  },
+  "globals": {
+    "tinymce": true,
+    "beforeAll": true,
+    "afterAll": true,
+    "context": true,
+    "test": true,
+    "describe": true,
+    "beforeEach": true,
+    "expect": true,
+    "jest": true
+  }
+}

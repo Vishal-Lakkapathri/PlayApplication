@@ -1,0 +1,3 @@
+rootProject.name = 'PlayApplication'
+
+include ':app'

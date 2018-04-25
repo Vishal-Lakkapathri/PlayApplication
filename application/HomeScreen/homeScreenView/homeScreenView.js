@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Text, View } from 'react-native';
 
-import { incrementCounter, decrementCounter } from './counterState';
+import { incrementCounter, decrementCounter, resetCounter } from './counterState';
 import Counter from '../counterView';
 
 export default class HomeScreenView extends Component {
@@ -10,12 +10,16 @@ export default class HomeScreenView extends Component {
     this.state = { counterValue: 0 };
   }
 
-  handelIncrementCounter = () => {
+  handleIncrementCounter = () => {
     this.setState(incrementCounter);
   }
 
-  decrementCounter = () => {
+  handleDecrementCounter = () => {
     this.setState(decrementCounter);
+  }
+
+  handleResetCounter = () => {
+    this.setState(resetCounter);
   }
 
   render() {
@@ -24,13 +28,14 @@ export default class HomeScreenView extends Component {
         <View style={{ justifyContent: 'center', marginBottom: 50 }}>
           <Counter
             counterValue={this.state.counterValue}
+            resetCounter={this.handleResetCounter}
           />
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <TouchableOpacity onPress={this.handelIncrementCounter}>
+          <TouchableOpacity onPress={this.handleIncrementCounter}>
             <Text>Increment Counter</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.decrementCounter}>
+          <TouchableOpacity onPress={this.handleDecrementCounter}>
             <Text>Decrement Counter</Text>
           </TouchableOpacity>
         </View>

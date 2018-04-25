@@ -5,3 +5,7 @@ export const incrementCounter = state => (
 export const decrementCounter = state => (
   { counterValue: state.counterValue - 1 }
 );
+
+export const resetCounter = () => (
+  { counterValue: 0 }
+);

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { incrementCounter, decrementCounter, resetCounter } from '../action/counterActions';
 import Counter from '../counterView';
+import CounterButtons from '../counterButtons';
 import styles from '../styles';
 
 type Props = {
@@ -30,20 +31,14 @@ class HomeScreenView extends Component <Props> {
     const { counter } = this.props;
     return (
       <View style={styles.container}>
-        <View style={{ justifyContent: 'center', marginBottom: 50 }}>
-          <Counter
-            counterValue={counter}
-            resetCounter={this.handleResetCounter}
-          />
-        </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <TouchableOpacity onPress={this.handleIncrementCounter}>
-            <Text>Increment Counter</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.handleDecrementCounter}>
-            <Text>Decrement Counter</Text>
-          </TouchableOpacity>
-        </View>
+        <Counter
+          counterValue={counter}
+          resetCounter={this.handleResetCounter}
+        />
+        <CounterButtons
+          incrementCounter={this.handleIncrementCounter}
+          decrementCounter={this.handleDecrementCounter}
+        />
       </View>
     );
   }

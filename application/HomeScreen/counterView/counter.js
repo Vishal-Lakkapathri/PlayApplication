@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Counter = (props: Props) => (
-  <View>
+  <View style={{ justifyContent: 'center', marginBottom: 50 }}>
     <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
       <Text>{props.counterValue}</Text>
     </View>

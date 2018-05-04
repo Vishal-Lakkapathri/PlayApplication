@@ -1,34 +1,38 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Text, View } from 'react-native';
+import { connect } from 'react-redux';
 
-import { incrementCounter, decrementCounter, resetCounter } from './counterState';
+import { incrementCounter, decrementCounter, resetCounter } from '../action/counterActions';
 import Counter from '../counterView';
 import styles from '../styles';
 
-export default class HomeScreenView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { counterValue: 0 };
-  }
+type Props = {
+  +incrementCounter: () => any,
+  +decrementCounter: () => any,
+  +resetCounter: () => any,
+  counter: number,
+}
 
+class HomeScreenView extends Component <Props> {
   handleIncrementCounter = () => {
-    this.setState(incrementCounter);
+    this.props.incrementCounter();
   }
 
   handleDecrementCounter = () => {
-    this.setState(decrementCounter);
+    this.props.decrementCounter();
   }
 
   handleResetCounter = () => {
-    this.setState(resetCounter);
+    this.props.resetCounter();
   }
 
   render() {
+    const { counter } = this.props;
     return (
       <View style={styles.container}>
         <View style={{ justifyContent: 'center', marginBottom: 50 }}>
           <Counter
-            counterValue={this.state.counterValue}
+            counterValue={counter}
             resetCounter={this.handleResetCounter}
           />
         </View>
@@ -44,3 +48,15 @@ export default class HomeScreenView extends Component {
     );
   }
 }
+
+const mapDisatchToProps = {
+  incrementCounter,
+  decrementCounter,
+  resetCounter,
+};
+
+const mapStateToProps = state => ({
+  counter: state.counter,
+});
+
+export default connect(mapStateToProps, mapDisatchToProps)(HomeScreenView);

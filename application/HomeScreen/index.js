@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import counterReducer from './reducer/counterReducer';
 
 import HomeScreenView from './homeScreenView';
 
-type Props = {};
-export default class HomeScreen extends Component<Props> {
+export default class HomeScreen extends Component {
   render() {
     return (
-      <HomeScreenView />
+      <Provider store={createStore(counterReducer)}>
+        <HomeScreenView />
+      </Provider>
     );
   }
 }

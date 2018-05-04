@@ -3,6 +3,7 @@ import { TouchableOpacity, Text, View } from 'react-native';
 
 import { incrementCounter, decrementCounter, resetCounter } from './counterState';
 import Counter from '../counterView';
+import styles from '../styles';
 
 export default class HomeScreenView extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ export default class HomeScreenView extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <View style={{ justifyContent: 'center', marginBottom: 50 }}>
           <Counter
             counterValue={this.state.counterValue}

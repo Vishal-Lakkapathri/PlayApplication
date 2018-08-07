@@ -3,6 +3,7 @@ import {
   INC_COUNTER,
   DEC_COUNTER,
   RESET_COUNTER,
+  STARWARS_LIST,
 } from '../constants/counterConstants';
 
 export default function counterReducer(state = initialState, action) {
@@ -23,6 +24,12 @@ export default function counterReducer(state = initialState, action) {
       return {
         ...state,
         counter: initialState.counter,
+      };
+    }
+    case STARWARS_LIST: {
+      return {
+        ...state,
+        starWarsCharacters: action.characters,
       };
     }
     default:

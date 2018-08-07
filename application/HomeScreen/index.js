@@ -5,13 +5,14 @@ import thunk from 'redux-thunk';
 
 import counterReducer from './reducer/counterReducer';
 
-import HomeScreenView from './homeScreenView';
+// import HomeScreenView from './homeScreenView';
+import StarWarsView from './StarWars';
 
 export default class HomeScreen extends Component {
   render() {
     return (
       <Provider store={createStore(counterReducer, applyMiddleware(thunk))}>
-        <HomeScreenView />
+        <StarWarsView />
       </Provider>
     );
   }
